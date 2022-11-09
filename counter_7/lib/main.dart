@@ -60,8 +60,8 @@ class _MyHomePageState extends State<MyHomePage> {
       // _counter without calling setState(), then the build method would not be
       // called again, and so nothing would appear to happen.
       _counter++;
-      GanjilGenap();
-      hideDecButton();
+      _GanjilGenap();
+      _hideDecButton();
     });
   }
 
@@ -73,15 +73,15 @@ class _MyHomePageState extends State<MyHomePage> {
       // _counter without calling setState(), then the build method would not be
       // called again, and so nothing would appear to happen.
       if (_counter == 0) {
-        return null;
+        return;
       }
       _counter--;
-      GanjilGenap();
-      hideDecButton();
+      _GanjilGenap();
+      _hideDecButton();
     });
   }
 
-  void GanjilGenap() {
+  void _GanjilGenap() {
     if (_counter % 2 == 0) {
       _tipe = 'GENAP';
     } else {
@@ -89,7 +89,7 @@ class _MyHomePageState extends State<MyHomePage> {
     }
   }
 
-  void hideDecButton() {
+  void _hideDecButton() {
     if (_counter != 0) {
       _isZero = true;
     } else {
@@ -97,7 +97,7 @@ class _MyHomePageState extends State<MyHomePage> {
     }
   }
 
-  TextStyle? getTipeTextStyle() {
+  TextStyle? _getTipeTextStyle() {
     if (_tipe == 'GENAP') {
       return TextStyle(color: Colors.red);
     } else {
@@ -141,7 +141,7 @@ class _MyHomePageState extends State<MyHomePage> {
             children: <Widget>[
               Text(
                 '$_tipe',
-                style: getTipeTextStyle(),
+                style: _getTipeTextStyle(),
               ),
               Text(
                 '$_counter',
@@ -169,11 +169,6 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: const Icon(Icons.add),
               ),
             ]))
-        // floatingActionButton: FloatingActionButton(
-        //   onPressed: _incrementCounter,
-        //   tooltip: 'Increment',
-        //   child: const Icon(Icons.add),
-        // ), // This trailing comma makes auto-formatting nicer for build methods.
         );
   }
 }
