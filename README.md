@@ -6,6 +6,10 @@ _Stateless widget_ adalah widget yang tidak dapat berubah sehingga dari awal mul
 Untuk mengatur widget statis dari aplikasi seperti title dan warna dasar.
 * Stateful widget  
 Untuk mengatur isi home page sehingga dapat berubah-ubah sesuai yang diinginkan.
+* Scaffold  
+Untuk mengimplementasikan struktur visual desain material aplikasi.
+* AppBar  
+Sebagai tempat dari _toolbar_ yang ada pada aplikasi.
 * Text  
 Untuk mengatur teks yang akan ditampilkan di aplilasi.
 * Center  
@@ -34,6 +38,8 @@ _const_ dan _final_ merupakan _immutable variable_ yang tidak dapat berubah. Per
 REFERENSI README.md
 * https://belajarflutter.com/perbedaan-stateful-dan-stateless-widget-di-flutter/
 * https://www.javatpoint.com/flutter-widgets
+* https://www.javatpoint.com/flutter-scaffold
+* https://medium.com/codechai/playing-with-appbar-in-flutter-3a8abd9b982a
 * https://blog.logrocket.com/flutter-floatingactionbutton-a-complete-tutorial-with-examples/
 * https://dev.to/nicks101/when-to-use-setstate-in-flutter-380
 * https://pusher.com/tutorials/flutter-user-input/
