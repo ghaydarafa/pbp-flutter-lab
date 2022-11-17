@@ -38,7 +38,7 @@ _const_ dan _final_ merupakan _immutable variable_ yang tidak dapat berubah. Per
 
 # Tugas 8
 
-### `Navigator.push` dan `Navigator.pushReplacement`
+### Navigator.push dan Navigator.pushReplacement
 `Navigator.push` akan menavigasi ke arah page baru dengan cara menambahkan route page baru ke stack berisi route-route yang diatur oleh Navigator. Perbedaannya dengan `Navigator.pushReplacement` adalah `Navigator.pushReplacement` akan mengganti route di stack teratas dengan route page yang baru ditambahkan.
 
 ### Widget yang dipakai pada _project_ ini
