@@ -82,6 +82,10 @@ class _MyDataPageState extends State<MyDataPage> {
                               ListData.listData[i].tipe.toString(),
                               style: TextStyle(fontStyle: FontStyle.italic, fontSize: 16),
                             ),
+                            Text(
+                              ListData.listData[i].date.toString(),
+                              style: TextStyle(color: Colors.grey, fontSize: 10),
+                            ),
                           ]
                          ),
                        )

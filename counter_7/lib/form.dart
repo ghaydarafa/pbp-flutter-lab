@@ -16,6 +16,8 @@ class _MyFormPageState extends State<MyFormPage> {
   int _nominal = 0;
   String? tipeBudget;
   List<String> listTipeBudget = ['Pemasukan', 'Pengeluaran'];
+  String warning = "";
+  DateTime date = DateTime.now();
 
   @override
   Widget build(BuildContext context) {
@@ -154,6 +156,36 @@ class _MyFormPageState extends State<MyFormPage> {
                     });
                   },
                 ),
+                Text(warning),
+                Padding(
+                  // Menggunakan padding sebesar 8 pixels
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    children: [
+                      Text('${date.day}/${date.month}/${date.year}'),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      ElevatedButton(
+                          child: Text('Select Date'),
+                          onPressed: () async {
+                            DateTime? pickedDate = await showDatePicker(
+                                context: context,
+                                initialDate: DateTime.now(),
+                                firstDate: DateTime(2000),
+                                lastDate: DateTime(2100));
+
+                            if (pickedDate == null) {
+                              return;
+                            } else {
+                              setState(() {
+                                date = pickedDate;
+                              });
+                            }
+                          })
+                    ],
+                  ),
+                ),
                 Container(
                   margin: const EdgeInsets.only(top: 10.0),
                   child: TextButton(
@@ -166,8 +198,17 @@ class _MyFormPageState extends State<MyFormPage> {
                     ),
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
-                        Data data = Data(_judul, _nominal, tipeBudget);
-                        ListData.listData.add(data);
+                        String dateString =
+                            '${date.day}/${date.month}/${date.year}';
+                        Data data =
+                            Data(_judul, _nominal, tipeBudget, dateString);
+                        if (tipeBudget == null) {
+                          setState(() {
+                            warning = 'Pilih jenis budget';
+                          });
+                        } else {
+                          ListData.listData.add(data);
+                        }
                       }
                     },
                   ),

@@ -10,8 +10,9 @@ class Data {
   String judul;
   int nominal;
   String? tipe;
+  String date;
 
-  Data(this.judul, this.nominal, this.tipe);
+  Data(this.judul, this.nominal, this.tipe, this.date);
 }
 
 class ListData {
