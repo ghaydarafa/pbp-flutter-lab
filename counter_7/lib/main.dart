@@ -6,6 +6,18 @@ void main() {
   runApp(const MyApp());
 }
 
+class Data {
+  String judul;
+  int nominal;
+  String? tipe;
+
+  Data(this.judul, this.nominal, this.tipe);
+}
+
+class ListData {
+  static List<Data> listData = [];
+}
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -23,7 +35,6 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  
   const MyHomePage({super.key});
 
   final String title = 'Program Counter';
@@ -36,10 +47,6 @@ class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
   bool _isZero = false;
   String _tipe = 'GENAP';
-  
-  List judulData = [];
-  List nominalData = [];
-  List tipeBudgetData = [];
 
   void _incrementCounter() {
     setState(() {
@@ -117,8 +124,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   // Route menu ke halaman utama
                   Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute(
-                      builder: (context) => MyHomePage()),
+                    MaterialPageRoute(builder: (context) => MyHomePage()),
                   );
                 },
               ),
@@ -128,11 +134,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   // Route menu ke halaman form
                   Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute(
-                      builder: (context) => MyFormPage(
-                          judulData: judulData,
-                          nominalData: nominalData,
-                          tipeBudgetData: tipeBudgetData)),
+                    MaterialPageRoute(builder: (context) => MyFormPage()),
                   );
                 },
               ),
@@ -145,11 +147,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   List tipeBudgetData = [];
                   Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute(
-                      builder: (context) => MyDataPage(
-                          judulData: judulData,
-                          nominalData: nominalData,
-                          tipeBudgetData: tipeBudgetData)),
+                    MaterialPageRoute(builder: (context) => MyDataPage()),
                   );
                 },
               ),
@@ -205,7 +203,6 @@ class _MyHomePageState extends State<MyHomePage> {
                 tooltip: 'Increment',
                 child: const Icon(Icons.add),
               ),
-            ]))
-        );
+            ])));
   }
 }

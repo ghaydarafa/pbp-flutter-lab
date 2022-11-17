@@ -4,15 +4,7 @@ import 'package:counter_7/data.dart';
 import 'package:flutter/services.dart';
 
 class MyFormPage extends StatefulWidget {
-  final List judulData;
-  final List nominalData;
-  final List tipeBudgetData;
-  const MyFormPage({
-    Key? key,
-    required this.judulData,
-    required this.nominalData,
-    required this.tipeBudgetData,
-  }) : super(key: key);
+  const MyFormPage({super.key});
 
   @override
   State<MyFormPage> createState() => _MyFormPageState();
@@ -52,11 +44,7 @@ class _MyFormPageState extends State<MyFormPage> {
                 // Route menu ke halaman form
                 Navigator.pushReplacement(
                   context,
-                  MaterialPageRoute(
-                      builder: (context) => MyFormPage(
-                          judulData: widget.judulData,
-                          nominalData: widget.nominalData,
-                          tipeBudgetData: widget.tipeBudgetData)),
+                  MaterialPageRoute(builder: (context) => MyFormPage()),
                 );
               },
             ),
@@ -66,11 +54,7 @@ class _MyFormPageState extends State<MyFormPage> {
                 // Route menu ke halaman form
                 Navigator.pushReplacement(
                   context,
-                  MaterialPageRoute(
-                      builder: (context) => MyDataPage(
-                          judulData: widget.judulData,
-                          nominalData: widget.nominalData,
-                          tipeBudgetData: widget.tipeBudgetData)),
+                  MaterialPageRoute(builder: (context) => MyDataPage()),
                 );
               },
             ),
@@ -182,9 +166,8 @@ class _MyFormPageState extends State<MyFormPage> {
                     ),
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
-                        widget.judulData.add(_judul);
-                        widget.nominalData.add(_nominal);
-                        widget.tipeBudgetData.add(tipeBudget);
+                        Data data = Data(_judul, _nominal, tipeBudget);
+                        ListData.listData.add(data);
                       }
                     },
                   ),

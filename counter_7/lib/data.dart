@@ -3,15 +3,7 @@ import 'package:counter_7/main.dart';
 import 'package:counter_7/form.dart';
 
 class MyDataPage extends StatefulWidget {
-  final List judulData;
-  final List nominalData;
-  final List tipeBudgetData;
-  const MyDataPage({
-    Key? key,
-    required this.judulData,
-    required this.nominalData,
-    required this.tipeBudgetData,
-    }) : super(key: key);
+  const MyDataPage({super.key});
 
   @override
   State<MyDataPage> createState() => _MyDataPageState();
@@ -48,10 +40,7 @@ class _MyDataPageState extends State<MyDataPage> {
                 Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => MyFormPage(
-                      judulData: widget.judulData,
-                      nominalData: widget.nominalData,
-                      tipeBudgetData: widget.tipeBudgetData)
+                      builder: (context) => MyFormPage()
                   ),
                 );
               },
@@ -63,10 +52,7 @@ class _MyDataPageState extends State<MyDataPage> {
                 Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => MyDataPage(
-                          judulData: widget.judulData,
-                          nominalData: widget.nominalData,
-                          tipeBudgetData: widget.tipeBudgetData)
+                      builder: (context) => MyDataPage()
                   ),
                 );
               },
@@ -77,7 +63,7 @@ class _MyDataPageState extends State<MyDataPage> {
       body: Container(
              child: Column( 
                children: [
-                 for(int i = 0; i < widget.judulData.length; i++)...[
+                 for(int i = 0; i < ListData.listData.length; i++)...[
                     Card(
                        child: Container(
                          padding: EdgeInsets.all(10),
@@ -85,15 +71,15 @@ class _MyDataPageState extends State<MyDataPage> {
                          child: Column(
                           children: [
                             Text(
-                              widget.judulData[i].toString(),
+                              ListData.listData[i].judul,
                               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
                             ),
                             Text(
-                              widget.nominalData[i].toString(),
+                              ListData.listData[i].nominal.toString(),
                               style: TextStyle(fontSize: 20),
                             ),
                             Text(
-                              widget.tipeBudgetData[i].toString(),
+                              ListData.listData[i].tipe.toString(),
                               style: TextStyle(fontStyle: FontStyle.italic, fontSize: 16),
                             ),
                           ]
