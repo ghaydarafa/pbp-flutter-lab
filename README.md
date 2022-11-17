@@ -34,8 +34,59 @@ _const_ dan _final_ merupakan _immutable variable_ yang tidak dapat berubah. Per
 * Membuat _void function_ `_decrementCounter()` untuk _decrement_ angka. Jika angka saat ini bernilai 0, maka akan mereturn kosong sehingga counter-- tidak akan bekerja.
 * Menyesuaikan _function decrement_ dan _increment_ dengan function _GanjilGenap()
 * Menyesuaikan widget text untuk menampilkan text GANJIL atau GENAP beserta style yang sesuai
+
+
+# Tugas 8
+
+### `Navigator.push` dan `Navigator.pushReplacement`
+`Navigator.push` akan menavigasi ke arah page baru dengan cara menambahkan route page baru ke stack berisi route-route yang diatur oleh Navigator. Perbedaannya dengan `Navigator.pushReplacement` adalah `Navigator.pushReplacement` akan mengganti route di stack teratas dengan route page yang baru ditambahkan.
+
+### Widget yang dipakai pada _project_ ini
+* Drawer  
+Untuk membuat list berisi daftar page yang ada.
+* ListView
+Untuk menampilkan daftar objek dengan layout scroll.
+* ListTile
+Untuk membuat isi dari objek di ListView dengan lebih spesifik.
+* Navigator
+Menavigasi ke page lain.
+* Form
+Membuat form yang dapat menerima input masukan.
+* SingleChildScrollView
+Membuat box yang dapat di-scroll
+* Container
+Untuk membuat suatu kontainer yang dapat menampung berbagai widget lain.
+* TextFormField
+Untuk menerima input form berupa text
+* DropDownButton
+Untuk membuat dropdown yang dapat dipilih salah satu value-nya.
+* TextButton
+Tombol sederhana dengan label.
+* Card
+Untuk membuat card yang dapat menampung berbagai informasi.
+
+### Jenis event pada flutter
+* onChanged
+Melakukan sesuatu ketika ada pergantian value.
+* onPressed
+Melakukan sesuatu ketika button dipencet.
+* onSaved
+Melakukan sesuatu ketika data disimpan.
+
+### Cara kerja Navigator dalam "mengganti" halaman
+Pada Flutter, Navigator mengubah isi stack berisi route-route page dengan `push` dan `pop`. Route adalah suatu map dengan string keys dan value seperti builder yang akan dikirim ke properti `route` yang dimiliki MaterialApp. `push` akan menavigasi ke page baru sedangkan `pop` akan menavigasi ke page sebelumnya. `push` menambahkan route page baru dengan mengambil argumen `BuildContext` dan `PageBuilder` sedangkan `pop` hanya mengambil argumen `BuildContext`. Untuk meng-handle pergantian route dan menavigasi halaman dengan animasi dapat menggunakan MaterialPageRoute
+
+### Proses implementasi _checklist_
+* Membuat page form.dart dan data.dart
+* Menambahkan drawer berisi main.dart, form.dart, dan data.dart
+* Membuat form dengan input judul, nominal, dan dropdown tipe budget.
+* Membuat class Data untuk membuat objek data berisi informasi di atas.
+* Membuat class ListData yang memiliki static variable List berisi Data.
+* Menambahkan Data ke ListData ketika form di-save.
+* Menampilkan data di data.dart dengan mengambil data dari ListData.
+
 -----
-REFERENSI README.md
+REFERENSI TUGAS
 * https://belajarflutter.com/perbedaan-stateful-dan-stateless-widget-di-flutter/
 * https://www.javatpoint.com/flutter-widgets
 * https://www.javatpoint.com/flutter-scaffold
@@ -44,4 +95,4 @@ REFERENSI README.md
 * https://dev.to/nicks101/when-to-use-setstate-in-flutter-380
 * https://pusher.com/tutorials/flutter-user-input/
 * https://belajarflutter.com/perbedaan-final-dan-const-pada-dart-dan-flutter/
-
+* https://blog.logrocket.com/understanding-flutter-navigation-routing/
