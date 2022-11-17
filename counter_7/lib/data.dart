@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:counter_7/main.dart';
+import 'package:counter_7/drawer.dart';
 import 'package:counter_7/form.dart';
 
 class MyDataPage extends StatefulWidget {
@@ -18,48 +19,7 @@ class _MyDataPageState extends State<MyDataPage> {
         title: Text('Data Budget'),
       ),
       // Menambahkan drawer menu
-      drawer: Drawer(
-        child: Column(
-          children: [
-            // Menambahkan clickable menu
-            ListTile(
-              title: const Text('Counter'),
-              onTap: () {
-                // Route menu ke halaman utama
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => MyHomePage()),
-                );
-              },
-            ),
-            ListTile(
-              title: const Text('Tambah Budget'),
-              onTap: () {
-                // Route menu ke halaman form
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => MyFormPage()
-                  ),
-                );
-              },
-            ),
-            ListTile(
-              title: const Text('Data Budget'),
-              onTap: () {
-                // Route menu ke halaman form
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => MyDataPage()
-                  ),
-                );
-              },
-            ),
-          ],
-        ),
-      ),
+      drawer: drawer(),
       body: Container(
              child: Column( 
                children: [
