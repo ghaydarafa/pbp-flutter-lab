@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:counter_7/form.dart';
-import 'package:counter_7/data.dart';
-import 'package:counter_7/drawer.dart';
+import 'package:counter_7/page/form.dart';
+import 'package:counter_7/page/data.dart';
+import 'package:counter_7/page/drawer.dart';
+
 void main() {
   runApp(const MyApp());
 }
+
 
 class Data {
   String judul;
@@ -13,6 +15,20 @@ class Data {
   String date;
 
   Data(this.judul, this.nominal, this.tipe, this.date);
+}
+
+class Watch {
+  String watched;
+  String title;
+  int? rating;
+  DateTime releaseDate;
+  String? review;
+
+  Watch(this.watched, this.title, this.rating, this.releaseDate, this.review);
+}
+
+class WatchData {
+  static Watch? watch;
 }
 
 class ListData {
