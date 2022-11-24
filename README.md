@@ -85,6 +85,40 @@ Pada Flutter, Navigator mengubah isi stack berisi route-route page dengan `push`
 * Menambahkan Data ke ListData ketika form di-save.
 * Menampilkan data di data.dart dengan mengambil data dari ListData.
 
+# Tugas 9
+
+### Melakukan pengambilan data JSON tanpa membuat model terlebih dahulu
+Karena JSON juga merupakan suatu objek, maka pengambilan data tetap dapat dilakukan tanpa membuat model. Tetapi, cara  ini tidak lebih baik dibandingkan membuat model terlebih dahulu karena kita akan kesulitan menyesuaikan pengambilan data dengan struktur model yang belum kita tentukan sendiri sebelumnya.
+
+### Widget yang dipakai pada _project_ ini
+* Sizedbox
+Box sederhana dengan ukuran yang dapat diatur.
+* AsyncSnapshot
+Representasi _immutable_ dari interaksi terakhir secara asinkronus
+* FutureBuilder
+Widget yang membuat dirinya sendiri berdasarkan snapshot.
+* Padding
+Memberikan lapisan atau space kosong.
+* GestureDetector
+Suatu widget yang dapat mendeteksi gerakan.
+* RichText
+Menampilkan teks yang dapat menggunakan banyak style berbeda.
+* TextSpan
+Text span yang _immutable_.
+* TextStyle
+Mendeskripsikan format dan gaya suatu teks.
+
+### Mekanisme pengambilan data dari json hingga dapat ditampilkan
+Dependency http akan melakukan pertukaran data melalui HTTP request. Response yang didapat berupa data json akan dikonversi ke model yang sesuai. Selanjutnya akan dilakukan fetch data dan dibangun menjadi suatu widget, lalu data akan ditampilkan.
+
+### Proses implementasi _checklist_
+* Menambahkan drawer mywatchlist
+* Membuat model mywatchlist dengan https://quicktype.io/
+* Membuat MyWatchListPage beserta function fetchmywatchlist() dan FutureBuilder untuk menampilkan dari AsyncronusSnapshot
+* Membuat class Watch yang berisi atribut model yang sesuai
+* Membuat class WatchData yang memiliki atribut static Watch
+* Melakukan pengambilan data yang sesuai untuk ditampilkan di detail
+* Menyusun page detail film
 -----
 REFERENSI TUGAS
 * https://belajarflutter.com/perbedaan-stateful-dan-stateless-widget-di-flutter/
@@ -96,3 +130,12 @@ REFERENSI TUGAS
 * https://pusher.com/tutorials/flutter-user-input/
 * https://belajarflutter.com/perbedaan-final-dan-const-pada-dart-dan-flutter/
 * https://blog.logrocket.com/understanding-flutter-navigation-routing/
+* https://www.geeksforgeeks.org/flutter-sizedbox-widget/
+* https://api.flutter.dev/flutter/widgets/AsyncSnapshot-class.html
+* https://api.flutter-io.cn/flutter/widgets/FutureBuilder-class.html
+* https://www.geeksforgeeks.org/flutter-padding-widget/
+* https://api.flutter.dev/flutter/widgets/GestureDetector-class.html
+* https://www.geeksforgeeks.org/richtext-widget-in-flutter/
+* https://www.geeksforgeeks.org/textspan-widget-in-flutter/
+* https://api.flutter.dev/flutter/painting/TextStyle-class.html
+* https://docs.flutter.dev/cookbook/networking/fetch-data
