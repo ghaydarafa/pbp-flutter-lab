@@ -32,6 +32,7 @@ class _MyWatchDetailPageState extends State<MyWatchDetailPage> {
                     const SizedBox(height: 10),
                     Container(
                       alignment: Alignment.centerLeft,
+                      padding: const EdgeInsets.all(20),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -39,7 +40,7 @@ class _MyWatchDetailPageState extends State<MyWatchDetailPage> {
                             text: TextSpan( //style for all textspan
                               children: [ 
                                   TextSpan(text:"Release date: ", style: TextStyle(fontWeight: FontWeight.bold,)),
-                                  TextSpan(text:"${WatchData.watch!.releaseDate}"),
+                                  TextSpan(text:"${WatchData.watch!.releaseDate.substring(8, 10)}${WatchData.watch!.releaseDate.substring(7, 8)}${WatchData.watch!.releaseDate.substring(5, 7)}${WatchData.watch!.releaseDate.substring(4, 5)}${WatchData.watch!.releaseDate.substring(0, 4)}"),
                               ]
                             )
                           ),   

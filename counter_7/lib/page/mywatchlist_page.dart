@@ -14,6 +14,8 @@ class MyWatchListPage extends StatefulWidget {
 }
 
 class _MyWatchListPageState extends State<MyWatchListPage> {
+  bool _value = false;
+
   Future<List<MyWatchList>> fetchMyWatchList() async {
     var url =
         Uri.parse('https://tugas-2-pbp-rafa.herokuapp.com/mywatchlist/json');
@@ -33,6 +35,10 @@ class _MyWatchListPageState extends State<MyWatchListPage> {
     for (var d in data) {
       if (d != null) {
         listWatchList.add(MyWatchList.fromJson(d));
+        if (MyWatchList.fromJson(d).fields.watched == "Yes")
+          WatchData.listStatus.add(true);
+        if (MyWatchList.fromJson(d).fields.watched == "No")
+          WatchData.listStatus.add(false);
       }
     }
 
@@ -71,37 +77,68 @@ class _MyWatchListPageState extends State<MyWatchListPage> {
                   );
                 } else {
                   return ListView.builder(
-                    itemCount: snapshot.data!.length,
-                    itemBuilder: (_, index) {
-                    return GestureDetector(
-                      child: Card(
-                        child: Padding(
-                          padding: const EdgeInsets.all(15.0),
-                          child: Text(
-                            "${snapshot.data![index].fields.title}",
-                            style: const TextStyle(
-                              fontSize: 18.0,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                      ),
-                      onTap: () {
-                        WatchData.watch = Watch(
-                            snapshot.data![index].fields.watched,
-                            snapshot.data![index].fields.title,
-                            snapshot.data![index].fields.rating,
-                            snapshot.data![index].fields.releaseDate.toString().substring(0, 10),
-                            snapshot.data![index].fields.review);
-                        // Route menu ke halaman form
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => MyWatchDetailPage()),
+                      itemCount: snapshot.data!.length,
+                      itemBuilder: (_, index) {
+                        return GestureDetector(
+                          child: Padding(
+                              padding: EdgeInsets.all(10),
+                              child: 
+                                ListTile(
+                                  shape: (WatchData.listStatus[index])
+                                      ? RoundedRectangleBorder(
+                                          side: BorderSide(
+                                              color: Colors.green, width: 2),
+                                          borderRadius:
+                                              BorderRadius.circular(0),
+                                        )
+                                      : RoundedRectangleBorder(
+                                          side: BorderSide(
+                                              color: Colors.grey, width: 2),
+                                          borderRadius:
+                                              BorderRadius.circular(0),
+                                        ),
+                                  title: Text(
+                                    "${snapshot.data![index].fields.title}",
+                                    style: const TextStyle(
+                                      fontSize: 18.0,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  trailing: Checkbox(
+                                    checkColor: Colors.greenAccent,
+                                    activeColor: Colors.green,
+                                    value: WatchData.listStatus[index],
+                                    onChanged: (bool? value) {
+                                      setState(() {
+                                        WatchData.listStatus[index] = value;
+                                      });
+                                    },
+                                  ),
+                                ),
+                              ),
+                          onTap: () {
+                            String watched = "Yes";
+                            if (WatchData.listStatus[index]) {
+                            } else {
+                              watched = "No";
+                            }
+                            WatchData.watch = Watch(
+                                watched,
+                                snapshot.data![index].fields.title,
+                                snapshot.data![index].fields.rating,
+                                snapshot.data![index].fields.releaseDate
+                                    .toString()
+                                    .substring(0, 10),
+                                snapshot.data![index].fields.review);
+                            // Route menu ke halaman form
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => MyWatchDetailPage()),
+                            );
+                          },
                         );
-                      },
-                    );
-                  });
+                      });
                 }
               }
             }));

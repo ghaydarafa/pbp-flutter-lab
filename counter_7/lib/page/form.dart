@@ -154,10 +154,6 @@ class _MyFormPageState extends State<MyFormPage> {
                 Container(
                   margin: const EdgeInsets.only(top: 10.0),
                   child: TextButton(
-                    child: const Text(
-                      "Simpan",
-                      style: TextStyle(color: Colors.white),
-                    ),
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all(Colors.blue),
                     ),
@@ -176,6 +172,10 @@ class _MyFormPageState extends State<MyFormPage> {
                         }
                       }
                     },
+                    child: const Text(
+                      "Simpan",
+                      style: TextStyle(color: Colors.white),
+                    ),
                   ),
                 ),
               ],

@@ -7,7 +7,6 @@ void main() {
   runApp(const MyApp());
 }
 
-
 class Data {
   String judul;
   int nominal;
@@ -29,6 +28,7 @@ class Watch {
 
 class WatchData {
   static Watch? watch;
+  static List listStatus = [];
 }
 
 class ListData {
