@@ -43,7 +43,6 @@ class Fields {
     required this.review,
   });
 
-  // Watched watched;
   String watched;
   String title;
   int? rating;

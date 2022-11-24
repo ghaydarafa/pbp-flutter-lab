@@ -19,7 +19,6 @@ class _MyWatchDetailPageState extends State<MyWatchDetailPage> {
       appBar: AppBar(
         title: Text('Detail'),
       ),
-      // Menambahkan drawer menu
       drawer: drawer(),
       body: Container(
           width: double.infinity,
@@ -40,18 +39,28 @@ class _MyWatchDetailPageState extends State<MyWatchDetailPage> {
                             text: TextSpan( //style for all textspan
                               children: [ 
                                   TextSpan(text:"Release date: ", style: TextStyle(fontWeight: FontWeight.bold,)),
-                                  TextSpan(text:"${WatchData.watch!.releaseDate.toString()}"),
+                                  TextSpan(text:"${WatchData.watch!.releaseDate}"),
                               ]
                             )
                           ),   
-                          RichText(
-                            text: TextSpan( //style for all textspan
-                              children: [ 
-                                  TextSpan(text:"Rating: ", style: TextStyle(fontWeight: FontWeight.bold,)),
-                                  TextSpan(text:"${WatchData.watch!.rating.toString()}"),
-                              ]
-                            )
-                          ),   
+                          if (WatchData.watch?.rating != null)
+                              RichText(
+                                text: TextSpan( //style for all textspan
+                                  children: [ 
+                                      TextSpan(text:"Rating: ", style: TextStyle(fontWeight: FontWeight.bold,)),
+                                      TextSpan(text:"${WatchData.watch!.rating.toString()}"),
+                                  ]
+                                )
+                              ),
+                          if (WatchData.watch?.rating == null)
+                              RichText(
+                                text: const TextSpan( //style for all textspan
+                                  children: [ 
+                                      TextSpan(text:"Rating: ", style: TextStyle(fontWeight: FontWeight.bold,)),
+                                      TextSpan(text:"-"),
+                                  ]
+                                )
+                              ),
                           RichText(
                             text: TextSpan( //style for all textspan
                               children: [ 
@@ -59,15 +68,25 @@ class _MyWatchDetailPageState extends State<MyWatchDetailPage> {
                                   TextSpan(text:"${WatchData.watch!.watched}"),
                               ]
                             )
-                          ),   
-                          RichText(
-                            text: TextSpan( //style for all textspan
-                              children: [ 
-                                  TextSpan(text:"Review: ", style: TextStyle(fontWeight: FontWeight.bold,)),
-                                  TextSpan(text:"${WatchData.watch!.review}"),
-                              ]
-                            )
-                          ), 
+                          ),
+                          if (WatchData.watch?.review != null)
+                              RichText(
+                                text: TextSpan( //style for all textspan
+                                  children: [ 
+                                      TextSpan(text:"Review: ", style: TextStyle(fontWeight: FontWeight.bold,)),
+                                      TextSpan(text:"${WatchData.watch!.review}"),
+                                  ]
+                                )
+                              ),
+                          if (WatchData.watch?.review == null)
+                              RichText(
+                                text: const TextSpan( //style for all textspan
+                                  children: [ 
+                                      TextSpan(text:"Review: ", style: TextStyle(fontWeight: FontWeight.bold,)),
+                                      TextSpan(text:"-"),
+                                  ]
+                                )
+                              ),
                         ]
                       ),
                     ),
@@ -81,7 +100,7 @@ class _MyWatchDetailPageState extends State<MyWatchDetailPage> {
                           MaterialPageRoute(builder: (context) => MyWatchListPage()),
                         );
                       },
-                      child: Text(
+                      child: const Text(
                         "Back",
                         style: TextStyle(
                           color: Color(0xffffffff),

@@ -87,11 +87,11 @@ class _MyWatchListPageState extends State<MyWatchListPage> {
                         ),
                       ),
                       onTap: () {
-                        WatchData.watch = new Watch(
+                        WatchData.watch = Watch(
                             snapshot.data![index].fields.watched,
                             snapshot.data![index].fields.title,
                             snapshot.data![index].fields.rating,
-                            snapshot.data![index].fields.releaseDate,
+                            snapshot.data![index].fields.releaseDate.toString().substring(0, 10),
                             snapshot.data![index].fields.review);
                         // Route menu ke halaman form
                         Navigator.pushReplacement(

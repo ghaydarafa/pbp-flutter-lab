@@ -21,7 +21,7 @@ class Watch {
   String watched;
   String title;
   int? rating;
-  DateTime releaseDate;
+  String releaseDate;
   String? review;
 
   Watch(this.watched, this.title, this.rating, this.releaseDate, this.review);
